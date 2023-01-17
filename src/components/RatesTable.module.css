@@ -11,8 +11,5 @@
 }
 
 .tableContent {
-    display: grid;
-    grid-template-columns: minmax(100px, auto) 95px;
-    gap: 5px;
-    padding: 5px;
+    padding: 10px 15px 15px;
 }
