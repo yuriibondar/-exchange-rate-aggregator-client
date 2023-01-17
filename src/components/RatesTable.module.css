@@ -16,13 +16,3 @@
     gap: 5px;
     padding: 5px;
 }
-
-.name {
-    font-weight: 600;
-}
-
-.exchangeRate {
-    display: grid;
-    grid-template-columns: 5fr 1fr 5fr;
-    gap: 3px;
-}

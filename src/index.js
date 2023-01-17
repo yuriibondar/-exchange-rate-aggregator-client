@@ -1,3 +1,5 @@
 import ReactDOM from "react-dom";
 import App from "./App";
-ReactDOM.render(<App />, document.getElementById("root"));
+import state from "./store/state";
+
+ReactDOM.render(<App state={state} />, document.getElementById("root"));
