@@ -1,4 +1,5 @@
-import { getRate } from "../api/minfin";
+import { getRate as getMinfinRate } from "../api/minfin";
+import { getRates as getKitRates } from "../api/kit";
 
 const store = {
   _state: {
@@ -9,12 +10,24 @@ const store = {
         buyRate: null,
         sellRate: null,
         _getRates(onUpdated) {
-          getRate("buy", "usd", "999Vadi").then((response) => {
+          getMinfinRate("buy", "usd", "999Vadi").then((response) => {
             this.buyRate = response;
             onUpdated();
           });
-          getRate("sell", "usd", "999Vadi").then((response) => {
+          getMinfinRate("sell", "usd", "999Vadi").then((response) => {
             this.sellRate = response;
+            onUpdated();
+          });
+        },
+      },
+      {
+        id: 2,
+        name: "Kit",
+        buyRate: null,
+        sellRate: null,
+        _getRates(onUpdated) {
+          getKitRates("USD").then((response) => {
+            this.buyRate = response;
             onUpdated();
           });
         },
