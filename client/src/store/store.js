@@ -27,7 +27,7 @@ const store = {
         sellRate: null,
         _getRates(onUpdated) {
           getKitRates("USD").then((response) => {
-            this.buyRate = response;
+            [this.buyRate, this.sellRate] = response;
             onUpdated();
           });
         },
@@ -66,8 +66,9 @@ const store = {
     if (
       this._stateUpdatedCallback &&
       this._stateUpdatedCallback instanceof Function
-    )
+    ) {
       this._stateUpdatedCallback();
+    }
   },
 };
 

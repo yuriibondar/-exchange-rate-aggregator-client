@@ -1,12 +1,10 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import App from "./App";
 import store from "./store/store";
 
-const render = () => {
-    ReactDOM.render(<App state={store.getState()} />, document.getElementById("root"));
-}
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(<App state={store.getState()} />);
 
-store.subscribeForStateUpdates(render);
+store.subscribeForStateUpdates(() => root.render(<App state={store.getState()} />));
 store.fetchRates();
-render();
-
