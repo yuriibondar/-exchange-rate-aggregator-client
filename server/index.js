@@ -1,8 +1,17 @@
 import { getRates as getKitRates } from "./api/kit.js";
 import express, { response } from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
+app.use(express.static(path.join(__dirname, './build')))
 const PORT = 5500;
+
+app.get(/^(?!\/api).+/, (req, res) => {
+    res.sendFile(path.join(__dirname, './build/index.html'))
+})
 
 app.get("/api/kit", (req, res) => {
     getKitRates()
