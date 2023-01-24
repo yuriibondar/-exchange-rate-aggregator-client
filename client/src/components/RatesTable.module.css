@@ -5,6 +5,7 @@
 }
 
 .tableHeader {
+    position: relative;
     background-color: darkgrey;
     text-align: center;
     padding: 10px;
@@ -12,4 +13,10 @@
 
 .tableContent {
     padding: 10px 15px 15px;
+}
+
+.updateButton {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }

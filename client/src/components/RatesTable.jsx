@@ -13,7 +13,7 @@ const RatesTable = (props) => {
 
   return (
     <div className={styles.table}>
-      <div className={styles.tableHeader}>$ Вінниця</div>
+      <div className={styles.tableHeader}>$ Вінниця <span className={styles.updateButton} onClick={props.fetchRates}>Refresh</span></div>
       <div className={styles.tableContent}>{dollarRates}</div>
     </div>
   );
