@@ -4,6 +4,12 @@
     margin: 10px auto;
 }
 
+@media screen and (max-width: 300px) {
+    .table {
+        width: 100%;
+    }
+}
+
 .tableHeader {
     position: relative;
     background-color: darkgrey;
