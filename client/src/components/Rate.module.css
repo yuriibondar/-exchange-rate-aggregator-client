@@ -10,7 +10,7 @@
 }
 
 .exchangeRate {
-    display: grid;
-    grid-template-columns: 5fr 1fr 5fr;
-    gap: 3px;
+    width: 90px;
+    display: flex;    
+    justify-content: space-between;
 }
