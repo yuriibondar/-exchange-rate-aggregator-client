@@ -1,5 +1,6 @@
 import Rate from "./Rate";
 import styles from "./RatesTable.module.css";
+import RefreshButton from "./RefreshButton/RefreshButton";
 
 const RatesTable = (props) => {
   const dollarRates = props.exchanges.map((ex) => (
@@ -13,8 +14,8 @@ const RatesTable = (props) => {
 
   return (
     <div className={styles.table}>
-      <div className={styles.tableHeader}>$ Вінниця <span className={styles.updateButton} onClick={props.fetchRates}>Refresh</span></div>
-      <div className={styles.tableContent}>{dollarRates}</div>
+      <div className={styles.tableHeader}>$ Вінниця <span className={styles.updateButton} onClick={props.fetchRates}><RefreshButton /></span></div>
+      <div className={styles.tableContent}>{dollarRates}</div>      
     </div>
   );
 };

@@ -24,6 +24,7 @@
 
 .updateButton {
     position: absolute;
-    right: 10px;
+    top: 4px;
+    right: 4px;
     cursor: pointer;
 }

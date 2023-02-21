@@ -1,0 +1,76 @@
+
+.circularArrows {
+  --container-size: 35px;
+  --arrow-thickness: calc(var(--container-size)/7);
+  --arrow-point-size: calc(var(--arrow-thickness)*1.5);
+  --color: rgb(58, 77, 58);
+  height: var(--container-size);
+  width: var(--container-size);
+  /* background-color: rgba(0, 255, 255, 0.2); */
+}
+
+.arrowContainer {
+  width: var(--container-size);
+  height: calc(var(--container-size)/2);
+  position: relative;
+  padding: var(--arrow-thickness);
+  box-sizing: border-box;
+  /* background-color: rgba(0,200,0,0.5); */
+  left: 0;
+}
+
+.arrowItem {
+  width: calc(var(--container-size) - var(--arrow-thickness)*2);
+  height: 100%;
+  /* background-color: rgba(0,150,150,0.9); */
+  /* position: absolute; */
+  top:var(--arrow-thickness);
+  left: var(--arrow-thickness);
+  overflow: hidden;
+}
+
+.curve {
+  display: block;
+  position: relative;
+  width: calc(var(--container-size) - var(--arrow-thickness)*2);
+  height: calc(var(--container-size)/2 - var(--arrow-thickness));
+  border: var(--arrow-thickness) solid var(--color);
+  border-bottom: none;
+  border-top-right-radius: calc(var(--container-size)/2);
+  border-top-left-radius: calc(var(--container-size)/2);
+  box-sizing: border-box;
+}
+
+.point {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: var(--arrow-point-size) var(--arrow-point-size) 0;
+  border-color: var(--color) transparent;
+  border-style: solid;
+  /* border-top: calc(var(--arrow-thickness)*1.5) solid var(--color);
+  border-left: calc(var(--arrow-thickness)*1.5) solid transparent;
+  border-right: calc(var(--arrow-thickness)*1.5) solid transparent; */
+  /* top: calc(var(--container-size)/2 - var(--arrow-thickness)); */
+  /* bottom: calc(var(--container-size)/2); */
+  bottom: 0;
+  right: 0.5px; /*calc(var(--arrow-thickness)/2);*/
+  transform: rotate(320deg);
+}
+
+.arrowContainer:first-child {
+  top: 0;
+}
+
+.arrowContainer:last-child {
+  transform: rotate(180deg);
+}
+
+.animated {
+  animation: spin 2s infinite linear;
+}
+
+/* @keyframes spin {
+  0% {transform(rotate(0deg));}
+  100% {transform(rotate(-360deg));}
+} */
