@@ -6,7 +6,6 @@
   --color: rgb(58, 77, 58);
   height: var(--container-size);
   width: var(--container-size);
-  /* background-color: rgba(0, 255, 255, 0.2); */
 }
 
 .arrowContainer {
@@ -15,15 +14,12 @@
   position: relative;
   padding: var(--arrow-thickness);
   box-sizing: border-box;
-  /* background-color: rgba(0,200,0,0.5); */
   left: 0;
 }
 
 .arrowItem {
   width: calc(var(--container-size) - var(--arrow-thickness)*2);
   height: 100%;
-  /* background-color: rgba(0,150,150,0.9); */
-  /* position: absolute; */
   top:var(--arrow-thickness);
   left: var(--arrow-thickness);
   overflow: hidden;
@@ -47,14 +43,9 @@
   height: 0;
   border-width: var(--arrow-point-size) var(--arrow-point-size) 0;
   border-color: var(--color) transparent;
-  border-style: solid;
-  /* border-top: calc(var(--arrow-thickness)*1.5) solid var(--color);
-  border-left: calc(var(--arrow-thickness)*1.5) solid transparent;
-  border-right: calc(var(--arrow-thickness)*1.5) solid transparent; */
-  /* top: calc(var(--container-size)/2 - var(--arrow-thickness)); */
-  /* bottom: calc(var(--container-size)/2); */
+  border-style: solid;  
   bottom: 0;
-  right: 0.5px; /*calc(var(--arrow-thickness)/2);*/
+  right: 0.5px;
   transform: rotate(320deg);
 }
 
@@ -70,7 +61,11 @@
   animation: spin 2s infinite linear;
 }
 
-/* @keyframes spin {
-  0% {transform(rotate(0deg));}
-  100% {transform(rotate(-360deg));}
-} */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
