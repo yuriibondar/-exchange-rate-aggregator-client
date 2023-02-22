@@ -14,7 +14,7 @@ const RatesTable = (props) => {
 
   return (
     <div className={styles.table}>
-      <div className={styles.tableHeader}>$ Вінниця <span className={styles.updateButton} onClick={props.fetchRates}><RefreshButton /></span></div>
+      <div className={styles.tableHeader}>$ Вінниця <span className={styles.updateButton} onClick={props.fetchRates}><RefreshButton isLoading={props.isLoading}/></span></div>
       <div className={styles.tableContent}>{dollarRates}</div>      
     </div>
   );

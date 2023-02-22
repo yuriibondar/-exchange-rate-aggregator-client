@@ -3,6 +3,7 @@ import { getRates as getKitRates } from "../api/kit";
 
 const store = {
   _state: {
+    isLoading: false,
     exchangers: [
       {
         id: 1,
@@ -10,14 +11,16 @@ const store = {
         buyRate: null,
         sellRate: null,
         _getRates(onUpdated) {
-          getMinfinRate("buy", "usd", "999Vadi").then((response) => {
-            this.buyRate = response;
-            onUpdated();
-          });
-          getMinfinRate("sell", "usd", "999Vadi").then((response) => {
-            this.sellRate = response;
-            onUpdated();
-          });
+          return Promise.all([
+            getMinfinRate("buy", "usd", "999Vadi").then((response) => {
+              this.buyRate = response;
+              onUpdated();
+            }),
+            getMinfinRate("sell", "usd", "999Vadi").then((response) => {
+              this.sellRate = response;
+              onUpdated();
+            }),
+          ]);
         },
       },
       {
@@ -26,7 +29,7 @@ const store = {
         buyRate: null,
         sellRate: null,
         _getRates(onUpdated) {
-          getKitRates("USD").then((response) => {
+          return getKitRates("USD").then((response) => {
             [this.buyRate, this.sellRate] = response;
             onUpdated();
           });
@@ -37,6 +40,7 @@ const store = {
 
   getState() {
     return {
+      isLoading: this._state.isLoading,
       exchanges: this._state.exchangers.map((e) => ({
         id: e.id,
         name: e.name,
@@ -51,9 +55,18 @@ const store = {
   },
 
   fetchRates() {
-    this._state.exchangers.forEach((e) =>
+    this._state.isLoading = true;
+    this._onUpdated();
+    const functions = this._state.exchangers.map((e) =>
       e._getRates(this._onUpdated.bind(this))
     );
+    Promise.all(functions).then((result) => {
+      this._state.isLoading = false;
+      this._onUpdated();
+    });
+    // this._state.exchangers.forEach((e) =>
+    //   e._getRates(this._onUpdated.bind(this))
+    // );
   },
 
   _stateUpdatedCallback: null,

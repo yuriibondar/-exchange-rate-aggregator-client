@@ -1,8 +1,8 @@
 import styles from "./RefreshButton.module.css";
 
-const RefreshButton = () => {
+const RefreshButton = ({isLoading}) => {
   return (
-    <div class={`${styles.circularArrows} ${styles.animated}`}>
+    <div class={`${styles.circularArrows} ${isLoading ? styles.animated : ''}`}>
       <div class={styles.arrowContainer}>
         <div class={styles.arrowItem}>
           <div class={styles.curve}></div>

@@ -5,7 +5,7 @@ const App = ({state, fetchRates}) => {
         <div>
             <header className='appHeader'>Моніторинг курсів</header>
             <main className='mainContent'>
-                <RatesTable exchanges={state.exchanges} fetchRates={fetchRates} />
+                <RatesTable exchanges={state.exchanges} fetchRates={fetchRates} isLoading={state.isLoading} />
             </main>
         </div>
     )
