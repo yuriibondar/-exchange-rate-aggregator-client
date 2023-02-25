@@ -5,12 +5,19 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const app = express();
-app.use(express.static(path.join(__dirname, './build')))
 const PORT = 5500;
 
+const app = express();
+// app.use(express.static(path.join(__dirname, './build')))
+
+// app.get(/^(?!\/api).+/, (req, res) => {
+//     res.sendFile(path.join(__dirname, './build/index.html'))
+// })
+
+const root = path.join(__dirname, 'build');
+app.use(express.static(root));
 app.get(/^(?!\/api).+/, (req, res) => {
-    res.sendFile(path.join(__dirname, './build/index.html'))
+    res.sendFile('index.html', { root });
 })
 
 app.get("/api/kit", (req, res) => {
