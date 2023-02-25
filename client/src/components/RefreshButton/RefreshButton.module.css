@@ -6,6 +6,7 @@
   --color: rgb(58, 77, 58);
   height: var(--container-size);
   width: var(--container-size);
+  will-change: transform;
 }
 
 .arrowContainer {
