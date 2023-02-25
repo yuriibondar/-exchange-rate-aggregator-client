@@ -12,12 +12,21 @@ const store = {
         sellRate: null,
         _getRates(onUpdated) {
           return Promise.all([
-            getMinfinRate("buy", "usd", "999Vadi").then((response) => {
-              this.buyRate = response;
-              onUpdated();
-            }),
+            getMinfinRate("buy", "usd", "999Vadi")
+              .then((response) => {
+                this.buyRate = response;
+                onUpdated();
+              })
+              .catch((error) => {
+                this.buyRate = null;
+                onUpdated();
+              }),
             getMinfinRate("sell", "usd", "999Vadi").then((response) => {
               this.sellRate = response;
+              onUpdated();
+            })
+            .catch((error) => {
+              this.sellRate = null;
               onUpdated();
             }),
           ]);
@@ -31,6 +40,10 @@ const store = {
         _getRates(onUpdated) {
           return getKitRates("USD").then((response) => {
             [this.buyRate, this.sellRate] = response;
+            onUpdated();
+          })
+          .catch((error) => {
+            [this.buyRate, this.sellRate] = [null, null];
             onUpdated();
           });
         },
@@ -56,6 +69,10 @@ const store = {
 
   fetchRates() {
     this._state.isLoading = true;
+    this._state.exchangers.forEach((e) => {
+      e.buyRate = null;
+      e.sellRate = null;
+    });
     this._onUpdated();
     const functions = this._state.exchangers.map((e) =>
       e._getRates(this._onUpdated.bind(this))
