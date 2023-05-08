@@ -13,7 +13,6 @@ const App = ({ state, fetchRates }) => {
         </main>
       </div>
       <Analytics />
-      Analytics
     </>
   );
 };
