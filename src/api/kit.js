@@ -28,7 +28,7 @@ export const getRates = (currency) => {
       })
       .catch((error) => {
         console.log(
-          `Failed to get Kit rates: `,
+          `Failed to get Kit rates from proxy: `,
           error
         );
         reject(error);

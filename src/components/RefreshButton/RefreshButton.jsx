@@ -2,17 +2,17 @@ import styles from "./RefreshButton.module.css";
 
 const RefreshButton = ({isLoading}) => {
   return (
-    <div class={`${styles.circularArrows} ${isLoading ? styles.animated : ''}`}>
-      <div class={styles.arrowContainer}>
-        <div class={styles.arrowItem}>
-          <div class={styles.curve}></div>
-          <div class={styles.point}></div>
+    <div className={`${styles.circularArrows} ${isLoading ? styles.animated : ''}`}>
+      <div className={styles.arrowContainer}>
+        <div className={styles.arrowItem}>
+          <div className={styles.curve}></div>
+          <div className={styles.point}></div>
         </div>
       </div>
-      <div class={styles.arrowContainer}>
-        <div class={styles.arrowItem}>
-          <div class={styles.curve}></div>
-          <div class={styles.point}></div>
+      <div className={styles.arrowContainer}>
+        <div className={styles.arrowItem}>
+          <div className={styles.curve}></div>
+          <div className={styles.point}></div>
         </div>
       </div>
     </div>
