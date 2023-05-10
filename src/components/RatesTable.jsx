@@ -3,7 +3,7 @@ import styles from "./RatesTable.module.css";
 import RefreshButton from "./RefreshButton/RefreshButton";
 
 const RatesTable = (props) => {
-  const dollarRates = props.exchanges.map((ex) => (
+  const dollarRates = props.exchangers.map((ex) => (
     <Rate
       name={ex.name}
       buy={ex.currencies.USD.buy}
